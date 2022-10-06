@@ -86,7 +86,7 @@ function handleOperator(nextOperator) {
         calculator.firstOperand = inputValue;
     } else if (operator) {
         const result = operate(firstOperand, inputValue, operator);
-        calculator.displayValue = String(result);
+        calculator.displayValue = `${parseFloat(result.toFixed(10))}`;
         calculator.firstOperand = result;
     }
 
@@ -131,6 +131,6 @@ function operate(firstOperand, secondOperand, operator) {
     - DONE! Replace event listener callback with reset function
 - DONE! Fix decimal bug, amend input decimal function
     - DONE! if waitingForSecondOperand is true & decimal is entered, displayValue = 0,
-- Refactor button event listeners to one switch block
+- DONE! Refactor button event listeners to one switch block
 - Update handleOperator to handle FP imprecision with parseFloat & toFixed()
 */
