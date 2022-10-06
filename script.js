@@ -24,19 +24,15 @@ buttons.forEach(button => button.addEventListener('click', (e) => {
         case '/':
         case '=':
             handleOperator(value);
-            console.table(calculator);
             break;
         case '.':
             inputDecimal(value);
-            console.table(calculator);
             break;
         case 'clear':
             clearDisplay();
-            console.table(calculator);
             break;
         case 'delete':
             deleteEntry();
-            console.table(calculator);
             break;
         default:
             if (Number.isInteger(parseFloat(value))) {
@@ -125,30 +121,3 @@ function operate(firstOperand, secondOperand, operator) {
             return secondOperand;
     }
 }
-
-/* TODO:
- - DONE! Create inputDigit function, when user clicks on a digit, display value is updated
- - DONE! Create inputDecimal function, is added unless one already exists in display
- - DONE! Create handleOperator function, takes nextOperator
-    - DONE! displayValue should be stored under firstOperand
-    - DONE! operator property should be updated with whatever operator was clicked
-    - DONE! When operator is clicked, displayValue is converted to floating point 
-    - DONE! waitingForSecondOperand is set to true
-    - Whatever digits the user enters next will constitute second operand
- - DONE! Amend inputDigit: if waitingForSecondOperand = true:
-    - DONE! displayValue is overwritten with the digit that was clicked
-- DONE! When second operand has been entered and operator is clicked:
-    - DONE! Calculation thus far is evaluated and displayed (operate function)
-- DONE! Update handleOperator, check if operator has been assigned an operator
-    - DONE! If so, operate, save result in result variable, displayValue = result
-    - DONE! firstOperand = result so it can be used in further calculation
-    - DONE! If operator and waitingForSecondOperand, operator = nextOperator, return
-- DONE! Reset Calculator function, set all calculator values to original values
-    - DONE! Replace event listener callback with reset function
-- DONE! Fix decimal bug, amend input decimal function
-    - DONE! if waitingForSecondOperand is true & decimal is entered, displayValue = 0,
-- DONE! Refactor button event listeners to one switch block
-- DONE! Update handleOperator to handle FP imprecision with parseFloat & toFixed()
-- DONE! Display Running calculation in smaller field above main display
-- Implement delete function, add to delete key switch case
-*/
