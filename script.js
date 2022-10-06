@@ -95,7 +95,7 @@ function operate(firstOperand, secondOperand, operator) {
             return firstOperand + secondOperand;
         case (operator === '-'):
             return firstOperand - secondOperand;
-        case (operator === '*'):
+        case (operator === 'x'):
             return firstOperand * secondOperand;
         case (operator === '/'):
             return firstOperand / secondOperand;
@@ -115,7 +115,7 @@ function operate(firstOperand, secondOperand, operator) {
     - Whatever digits the user enters next will constitute second operand
  - DONE! Amend inputDigit: if waitingForSecondOperand = true:
     - DONE! displayValue is overwritten with the digit that was clicked
-- When second operand has been entered and operator is clicked:
+- DONE! When second operand has been entered and operator is clicked:
     - Calculation thus far is evaluated and displayed (operate function)
 - Update handleOperator, check if operator has been assigned an operator
     - If so, operate, save result in result variable, displayValue = result
