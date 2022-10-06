@@ -11,41 +11,35 @@ const clickAudio = new Audio('./sounds/clickAudio.mp3');
 buttons.forEach(button => button.addEventListener('click', () => clickAudio.play()));
 buttons.forEach(button => button.addEventListener('click', (e) => {
     const { target } = e;
+    const { value } = target;
     if (!target.matches('button')) {
         return;
     }
 
-    if (target.classList.contains('operators')) {
-        handleOperator(target.value);
-        updateDisplay();
-        console.table(calculator);
-        return;
+    switch (value) {
+        case '+':
+        case '-':
+        case 'x':
+        case '/':
+        case '=':
+            handleOperator(value);
+            console.table(calculator);
+            break;
+        case '.':
+            inputDecimal(value);
+            console.table(calculator);
+            break;
+        case 'clear':
+            clearDisplay();
+            console.table(calculator);
+            break;
+        default:
+            if (Number.isInteger(parseFloat(value))) {
+                inputDigit(value);
+            }
     }
-
-    if (target.classList.contains('decimal')) {
-        inputDecimal(target.value);
-        updateDisplay();
-        console.table(calculator);
-        return;
-    }
-
-    if(target.classList.contains('clear')) {
-        clearDisplay();
-        updateDisplay();
-        console.table(calculator);
-        return;
-    }
-
-    if (target.classList.contains('delete')) {
-        console.table('delete', target.value);
-        return;
-    }
-
-    inputDigit(target.value);
     updateDisplay();
-    console.table(calculator);
-}))
-
+}));
 
 function updateDisplay() {
     const display = document.getElementById('display');
@@ -135,10 +129,8 @@ function operate(firstOperand, secondOperand, operator) {
     - DONE! If operator and waitingForSecondOperand, operator = nextOperator, return
 - DONE! Reset Calculator function, set all calculator values to original values
     - DONE! Replace event listener callback with reset function
-- Fix decimal bug, amend input decimal function
-    - if waitingForSecondOperand is true & decimal is entered, displayValue = 0,
-    - waitingForSecondOperand = false
+- DONE! Fix decimal bug, amend input decimal function
+    - DONE! if waitingForSecondOperand is true & decimal is entered, displayValue = 0,
 - Refactor button event listeners to one switch block
 - Update handleOperator to handle FP imprecision with parseFloat & toFixed()
-
 */
