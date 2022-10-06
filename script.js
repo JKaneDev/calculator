@@ -51,7 +51,6 @@ function updateDisplay() {
     const display = document.getElementById('display');
     display.value = calculator.displayValue;
 }
-
 updateDisplay(); 
 
 function clearDisplay() {
@@ -74,9 +73,15 @@ function inputDigit(digit) {
 }
 
 function inputDecimal(decimal) {
-     if (!calculator.displayValue.includes(decimal)) {
-        calculator.displayValue += decimal;
-     }
+    if (calculator.waitingForSecondOperand === true) {
+        calculator.displayValue = '0.';
+        calculator.waitingForSecondOperand = false;
+    }
+
+    if (!calculator.displayValue.includes(decimal)) {
+    calculator.displayValue += decimal;
+    }
+
 }
 
 function handleOperator(nextOperator) {
@@ -128,8 +133,8 @@ function operate(firstOperand, secondOperand, operator) {
     - DONE! If so, operate, save result in result variable, displayValue = result
     - DONE! firstOperand = result so it can be used in further calculation
     - DONE! If operator and waitingForSecondOperand, operator = nextOperator, return
-- Reset Calculator function, set all calculator values to original values
-    - Replace event listener callback with reset function
+- DONE! Reset Calculator function, set all calculator values to original values
+    - DONE! Replace event listener callback with reset function
 - Fix decimal bug, amend input decimal function
     - if waitingForSecondOperand is true & decimal is entered, displayValue = 0,
     - waitingForSecondOperand = false
