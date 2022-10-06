@@ -34,6 +34,10 @@ buttons.forEach(button => button.addEventListener('click', (e) => {
             clearDisplay();
             console.table(calculator);
             break;
+        case 'delete':
+            deleteEntry();
+            console.table(calculator);
+            break;
         default:
             if (Number.isInteger(parseFloat(value))) {
                 inputDigit(value);
@@ -62,7 +66,10 @@ function clearDisplay() {
     calculator.waitingForSecondOperand = false;
 }
 
-function deleteDigit(event, erase, display) {}
+function deleteEntry() {
+    const { displayValue } = calculator;
+    calculator.displayValue = calculator.displayValue.slice(0, -1);
+}
 
 function inputDigit(digit) {
     const { displayValue, waitingForSecondOperand } = calculator;
@@ -142,5 +149,6 @@ function operate(firstOperand, secondOperand, operator) {
     - DONE! if waitingForSecondOperand is true & decimal is entered, displayValue = 0,
 - DONE! Refactor button event listeners to one switch block
 - DONE! Update handleOperator to handle FP imprecision with parseFloat & toFixed()
-- Display Running calculation in smaller field above main display
+- DONE! Display Running calculation in smaller field above main display
+- Implement delete function, add to delete key switch case
 */
