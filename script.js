@@ -30,7 +30,9 @@ buttons.forEach(button => button.addEventListener('click', (e) => {
     }
 
     if(target.classList.contains('clear')) {
-        console.table('clear', target.value);
+        clearDisplay();
+        updateDisplay();
+        console.table(calculator);
         return;
     }
 
@@ -52,7 +54,12 @@ function updateDisplay() {
 
 updateDisplay(); 
 
-function clearDisplay(event, clear, display, runningCalc) {}
+function clearDisplay() {
+    calculator.displayValue = '0';
+    calculator.firstOperand = null;
+    calculator.operator = null;
+    calculator.waitingForSecondOperand = false;
+}
 
 function deleteDigit(event, erase, display) {}
 
@@ -116,11 +123,11 @@ function operate(firstOperand, secondOperand, operator) {
  - DONE! Amend inputDigit: if waitingForSecondOperand = true:
     - DONE! displayValue is overwritten with the digit that was clicked
 - DONE! When second operand has been entered and operator is clicked:
-    - Calculation thus far is evaluated and displayed (operate function)
-- Update handleOperator, check if operator has been assigned an operator
-    - If so, operate, save result in result variable, displayValue = result
-    - firstOperand = result so it can be used in further calculation
-    - If operator and waitingForSecondOperand, operator = nextOperator, return
+    - DONE! Calculation thus far is evaluated and displayed (operate function)
+- DONE! Update handleOperator, check if operator has been assigned an operator
+    - DONE! If so, operate, save result in result variable, displayValue = result
+    - DONE! firstOperand = result so it can be used in further calculation
+    - DONE! If operator and waitingForSecondOperand, operator = nextOperator, return
 - Reset Calculator function, set all calculator values to original values
     - Replace event listener callback with reset function
 - Fix decimal bug, amend input decimal function
