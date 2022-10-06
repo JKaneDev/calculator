@@ -74,9 +74,20 @@ html, body {
     padding: 0;
 }
 
+#running-calc {
+    padding: 2px 14px 0px 0px; 
+    font-size: 18px;
+    overflow-wrap: break-word;
+    max-width: 350px;
+    margin: 0;
+    text-align: right;
+    background-color: lightgrey;
+    border: none;
+    color: #000;
+}
 
 #display {
-    padding: 8px 12px 8px 12px; 
+    padding: 8px 12px 4px 12px; 
     font-size: 32px;
     overflow-wrap: break-word;
     max-width: 350px;

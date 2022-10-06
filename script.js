@@ -1,5 +1,6 @@
 const calculator = {
     displayValue: '0',
+    runningCalc: null,
     firstOperand: null,
     waitingForSecondOperand: false,
     operator: null,
@@ -38,8 +39,14 @@ buttons.forEach(button => button.addEventListener('click', (e) => {
                 inputDigit(value);
             }
     }
+    updateRunningCalc();
     updateDisplay();
 }));
+
+function updateRunningCalc() {
+    const runningCalc = document.getElementById('running-calc');
+    runningCalc.value = calculator.runningCalc;
+}
 
 function updateDisplay() {
     const display = document.getElementById('display');
@@ -49,6 +56,7 @@ updateDisplay();
 
 function clearDisplay() {
     calculator.displayValue = '0';
+    calculator.runningCalc = null;
     calculator.firstOperand = null;
     calculator.operator = null;
     calculator.waitingForSecondOperand = false;
@@ -86,6 +94,7 @@ function handleOperator(nextOperator) {
         calculator.firstOperand = inputValue;
     } else if (operator) {
         const result = operate(firstOperand, inputValue, operator);
+        calculator.runningCalc = `${firstOperand} ${operator} ${inputValue} ${nextOperator}`
         calculator.displayValue = `${parseFloat(result.toFixed(10))}`;
         calculator.firstOperand = result;
     }
@@ -132,5 +141,6 @@ function operate(firstOperand, secondOperand, operator) {
 - DONE! Fix decimal bug, amend input decimal function
     - DONE! if waitingForSecondOperand is true & decimal is entered, displayValue = 0,
 - DONE! Refactor button event listeners to one switch block
-- Update handleOperator to handle FP imprecision with parseFloat & toFixed()
+- DONE! Update handleOperator to handle FP imprecision with parseFloat & toFixed()
+- Display Running calculation in smaller field above main display
 */
