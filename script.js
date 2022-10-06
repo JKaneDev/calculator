@@ -64,9 +64,6 @@ function inputDigit(digit) {
     } else {
         calculator.displayValue = displayValue == '0' ? digit : displayValue + digit;
     }
-    
-
- 
 }
 
 function inputDecimal(decimal) {
@@ -78,12 +75,18 @@ function inputDecimal(decimal) {
 function handleOperator(nextOperator) {
     const { firstOperand, displayValue, operator } = calculator;
     const inputValue = parseFloat(displayValue);
+
     if (firstOperand == null && !isNaN(inputValue)) {
-        calculator.firstOperand = displayValue;
-    } 
+        calculator.firstOperand = inputValue;
+    } else if (operator) {
+        const result = operate(firstOperand, inputValue, operator);
+        calculator.displayValue = String(result);
+        calculator.firstOperand = result;
+    }
 
     calculator.waitingForSecondOperand = true;
     calculator.operator = nextOperator;
+    console.log(calculator);
 }
 
 function operate(firstOperand, secondOperand, operator) {
