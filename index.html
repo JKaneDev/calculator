@@ -6,7 +6,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <script src="./script.js" defer></script>
+    <link rel="shortcut icon" href="#" />
+    <script src="script.js" defer></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,27 +17,26 @@
     <div class="container">
       <div class="calculator">
         <div class="screen">
-          <div class="running-calc">2000 * 50</div>
-          <div class="display">5000</div>
+          <input type="text" id="display" value="0" disabled></input>
         </div>
-        <div class="buttons clear">CLEAR</div>
-        <div class="buttons delete">DELETE</div>
-        <div class="buttons">7</div>
-        <div class="buttons">8</div>
-        <div class="buttons">9</div>
-        <div class="buttons operators">/</div>
-        <div class="buttons">4</div>
-        <div class="buttons">5</div>
-        <div class="buttons">6</div>
-        <div class="buttons operators">x</div>
-        <div class="buttons">1</div>
-        <div class="buttons">2</div>
-        <div class="buttons">3</div>
-        <div class="buttons operators">-</div>
-        <div class="buttons">.</div>
-        <div class="buttons">0</div>
-        <div class="buttons operators">=</div>
-        <div class="buttons operators">+</div>
+        <button type="button" value="delete" class="buttons delete">DELETE</button>
+        <button type="button" value="clear" class="buttons clear">CLEAR</button>
+        <button type="button" value="7" class="buttons digits" id="seven">7</button>
+        <button type="button" value="8" class="buttons digits" id="eight">8</button>
+        <button type="button" value="9" class="buttons digits" id="nine">9</button>
+        <button type="button" value="&divide;" class="buttons operators" id="divide">&divide;</button>
+        <button type="button" value="4" class="buttons digits" id="four">4</button>
+        <button type="button" value="5" class="buttons digits" id="five">5</button>
+        <button type="button" value="6" class="buttons digits" id="six">6</button>
+        <button type="button" value="x" class="buttons operators" id="multiply">&times;</button>
+        <button type="button" value="1" class="buttons digits" id="one">1</button>
+        <button type="button" value="2" class="buttons digits" id="two">2</button>
+        <button type="button" value="3" class="buttons digits" id="three">3</button>
+        <button type="button" value="-" class="buttons operators" id="minus">-</button>
+        <button type="button" value="." class="buttons digits decimal" id="decimal">.</button>
+        <button type="button" value="0" class="buttons digits" id="zero">0</button>
+        <button type="button" value="=" class="buttons operators" id="equals">=</button>
+        <button type="button" value="+" class="buttons operators" id="plus">+</button>
       </div>
     </div>
     <footer>Copyright &copy; 2022 jkane <i class="fa fa-github"></i></footer>
